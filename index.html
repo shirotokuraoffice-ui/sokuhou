@@ -39,11 +39,11 @@
       display: flex;
       align-items: center;
     }
-    .title-shortage {
-      color: #c62828;
-    }
     .title-popular {
       color: #1b7a43;
+    }
+    .title-shortage {
+      color: #c62828;
     }
     .title-message {
       color: #e65100;
@@ -59,23 +59,23 @@
       padding: 14px 16px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+    .card-popular {
+      border: 2px solid #cce5d6;
+    }
     .card-shortage {
       border: 2px solid #ffcdd2;
       background-color: #fff8f8;
-    }
-    .card-popular {
-      border: 2px solid #cce5d6;
     }
     .item-text {
       font-size: 20px;
       font-weight: bold;
       line-height: 1.4;
     }
-    .text-shortage {
-      color: #b71c1c;
-    }
     .text-popular {
       color: #111111;
+    }
+    .text-shortage {
+      color: #b71c1c;
     }
     .message-card {
       background-color: #ffffff;
@@ -109,16 +109,16 @@
       <div class="update-time" id="lastUpdate">🕒 読み込み中</div>
     </div>
 
-    <!-- 欠品・品薄エリア -->
-    <div id="shortageArea" style="display: none;">
-      <div class="section-title title-shortage">📦 欠品・品薄（急募・追加歓迎！）</div>
-      <div class="card-list" id="shortageList"></div>
-    </div>
-
-    <!-- 売れ筋エリア -->
+    <!-- 売れ筋エリア（上） -->
     <div id="popularArea" style="display: none;">
       <div class="section-title title-popular">🔥 いま、これが売れてます！</div>
       <div class="card-list" id="popularList"></div>
+    </div>
+
+    <!-- 欠品・品薄エリア（下） -->
+    <div id="shortageArea" style="display: none;">
+      <div class="section-title title-shortage">📦 欠品・品薄（急募・追加歓迎！）</div>
+      <div class="card-list" id="shortageList"></div>
     </div>
 
     <!-- メモ・ひと言エリア -->
@@ -142,18 +142,6 @@
         // 最終更新日時
         document.getElementById('lastUpdate').textContent = "🕒 " + data.lastUpdate + " 現在";
 
-        // 欠品・急募リスト
-        if (data.shortageItems && data.shortageItems.length > 0) {
-          document.getElementById('shortageArea').style.display = 'block';
-          const shortageList = document.getElementById('shortageList');
-          data.shortageItems.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'item-card card-shortage';
-            card.innerHTML = `<div class="item-text text-shortage">● ${item}</div>`;
-            shortageList.appendChild(card);
-          });
-        }
-
         // 売れ筋リスト
         if (data.popularItems && data.popularItems.length > 0) {
           document.getElementById('popularArea').style.display = 'block';
@@ -163,6 +151,18 @@
             card.className = 'item-card card-popular';
             card.innerHTML = `<div class="item-text text-popular">● ${item}</div>`;
             popularList.appendChild(card);
+          });
+        }
+
+        // 欠品・急募リスト
+        if (data.shortageItems && data.shortageItems.length > 0) {
+          document.getElementById('shortageArea').style.display = 'block';
+          const shortageList = document.getElementById('shortageList');
+          data.shortageItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card card-shortage';
+            card.innerHTML = `<div class="item-text text-shortage">● ${item}</div>`;
+            shortageList.appendChild(card);
           });
         }
 
