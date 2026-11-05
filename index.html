@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あじ・彩・感 売れ筋速報</title>
+  <title>あじ・彩・感 売り場速報</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -35,30 +35,51 @@
     .section-title {
       font-size: 20px;
       font-weight: bold;
+      margin: 22px 0 10px 4px;
+      display: flex;
+      align-items: center;
+    }
+    .title-shortage {
+      color: #c62828;
+    }
+    .title-popular {
       color: #1b7a43;
-      margin: 20px 0 10px 4px;
+    }
+    .title-message {
+      color: #e65100;
     }
     .card-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .item-card {
       background-color: #ffffff;
-      border: 2px solid #cce5d6;
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px 16px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+    .card-shortage {
+      border: 2px solid #ffcdd2;
+      background-color: #fff8f8;
+    }
+    .card-popular {
+      border: 2px solid #cce5d6;
+    }
     .item-text {
-      font-size: 21px;
+      font-size: 20px;
       font-weight: bold;
-      color: #111111;
       line-height: 1.4;
+    }
+    .text-shortage {
+      color: #b71c1c;
+    }
+    .text-popular {
+      color: #111111;
     }
     .message-card {
       background-color: #ffffff;
-      border-left: 6px solid #e27d24;
+      border-left: 6px solid #f57c00;
       border-radius: 8px;
       padding: 16px;
       margin-top: 10px;
@@ -84,15 +105,25 @@
 
   <div id="content" style="display: none;">
     <div class="header">
-      <h1>あじ・彩・感 売れ筋速報</h1>
+      <h1>あじ・彩・感 売り場速報</h1>
       <div class="update-time" id="lastUpdate">🕒 読み込み中</div>
     </div>
 
-    <div class="section-title">🔥 いま、これが売れてます！</div>
-    <div class="card-list" id="itemList"></div>
+    <!-- 欠品・品薄エリア -->
+    <div id="shortageArea" style="display: none;">
+      <div class="section-title title-shortage">📦 欠品・品薄（急募・追加歓迎！）</div>
+      <div class="card-list" id="shortageList"></div>
+    </div>
 
+    <!-- 売れ筋エリア -->
+    <div id="popularArea" style="display: none;">
+      <div class="section-title title-popular">🔥 いま、これが売れてます！</div>
+      <div class="card-list" id="popularList"></div>
+    </div>
+
+    <!-- メモ・ひと言エリア -->
     <div id="messageArea" style="display: none;">
-      <div class="section-title" style="color: #c05e10;">📢 お店からのひと言</div>
+      <div class="section-title title-message">📢 お店からのひと言</div>
       <div class="message-card">
         <div class="message-text" id="shopMessage"></div>
       </div>
@@ -111,14 +142,29 @@
         // 最終更新日時
         document.getElementById('lastUpdate').textContent = "🕒 " + data.lastUpdate + " 現在";
 
+        // 欠品・急募リスト
+        if (data.shortageItems && data.shortageItems.length > 0) {
+          document.getElementById('shortageArea').style.display = 'block';
+          const shortageList = document.getElementById('shortageList');
+          data.shortageItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card card-shortage';
+            card.innerHTML = `<div class="item-text text-shortage">● ${item}</div>`;
+            shortageList.appendChild(card);
+          });
+        }
+
         // 売れ筋リスト
-        const itemList = document.getElementById('itemList');
-        data.items.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'item-card';
-          card.innerHTML = `<div class="item-text">● ${item}</div>`;
-          itemList.appendChild(card);
-        });
+        if (data.popularItems && data.popularItems.length > 0) {
+          document.getElementById('popularArea').style.display = 'block';
+          const popularList = document.getElementById('popularList');
+          data.popularItems.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'item-card card-popular';
+            card.innerHTML = `<div class="item-text text-popular">● ${item}</div>`;
+            popularList.appendChild(card);
+          });
+        }
 
         // お店からのメッセージ
         if (data.shopMessage && data.shopMessage.trim() !== '') {
