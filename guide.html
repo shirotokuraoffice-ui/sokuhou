@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あじ・彩・感 LINEの使い方＆よくある質問</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      background-color: #f4f6f4;
+      color: #333333;
+    }
+    .header {
+      background-color: #1b7a43;
+      color: #ffffff;
+      padding: 18px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      margin: 0 0 6px 0;
+      font-size: 21px;
+      letter-spacing: 1px;
+    }
+    .header p {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1b7a43;
+      margin: 24px 0 12px 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .btn-guide-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eeeeee;
+    }
+    .btn-guide-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .btn-guide-item:first-child {
+      padding-top: 0;
+    }
+    .btn-icon-badge {
+      font-size: 24px;
+      min-width: 40px;
+      text-align: center;
+      padding-top: 2px;
+    }
+    .btn-guide-text {
+      flex: 1;
+    }
+    .btn-name {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111111;
+      margin-bottom: 4px;
+    }
+    .btn-desc {
+      font-size: 14px;
+      color: #555555;
+      line-height: 1.5;
+    }
+    /* アコーディオン形式のQ&A */
+    details {
+      border-bottom: 1px solid #eeeeee;
+      padding: 12px 0;
+    }
+    details:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    details:first-child {
+      padding-top: 0;
+    }
+    summary {
+      font-size: 16px;
+      font-weight: bold;
+      color: #111111;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 1.4;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary::after {
+      content: "＋";
+      font-size: 18px;
+      color: #1b7a43;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    details[open] summary::after {
+      content: "−";
+    }
+    .answer-box {
+      margin-top: 10px;
+      padding: 12px;
+      background-color: #f9fbf9;
+      border-left: 4px solid #1b7a43;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333333;
+    }
+    .footer-tel {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px 16px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .footer-tel p {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #666;
+    }
+    .tel-btn {
+      display: inline-block;
+      background-color: #1b7a43;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>📖 LINEの使い方・Q&A</h1>
+    <p>出荷者のみなさま専用の便利ガイド</p>
+  </div>
+
+  <div class="section-title">📱 画面下のボタンでできること</div>
+  <div class="card">
+    <div class="btn-guide-item">
+      <div class="btn-icon-badge">📢</div>
+      <div class="btn-guide-text">
+        <div class="btn-name">お知らせ</div>
+        <div class="btn-desc">店舗からの業務連絡、営業時間変更、イベント開催の案内などを一覧で確認できます。</div>
+      </div>
+    </div>
+    <div class="btn-guide-item">
+      <div class="btn-icon-badge">📣</div>
+      <div class="btn-guide-text">
+        <div class="btn-name">今日の売れ筋と欠品・品薄情報</div>
+        <div class="btn-desc">店舗スタッフが入力した最新の売れ筋野菜や、棚が空いて急募している品目がリアルタイムで確認できます。</div>
+      </div>
+    </div>
+    <div class="btn-guide-item">
+      <div class="btn-icon-badge">📅</div>
+      <div class="btn-guide-text">
+        <div class="btn-name">カレンダー</div>
+        <div class="btn-desc">定休日や特売日、大型バスの来店予定など、当月のイベントカレンダー画像が大きく届きます。</div>
+      </div>
+    </div>
+    <div class="btn-guide-item">
+      <div class="btn-icon-badge">📞</div>
+      <div class="btn-guide-text">
+        <div class="btn-name">店舗へ連絡</div>
+        <div class="btn-desc">タップすると「あじ・彩・感」の店舗直通電話番号につながります。緊急の連絡にご利用ください。</div>
+      </div>
+    </div>
+    <div class="btn-guide-item">
+      <div class="btn-icon-badge">📖</div>
+      <div class="btn-guide-text">
+        <div class="btn-name">LINEの使い方</div>
+        <div class="btn-desc">このガイド画面を開きます。操作に迷ったときにご確認ください。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">❓ よくある質問（困ったときは）</div>
+  <div class="card">
+    <details open>
+      <summary>Q. 売れ筋や欠品情報はいつ更新されますか？</summary>
+      <div class="answer-box">
+        店舗スタッフが売り場の様子を見ながら、午前・午後に随時更新しています。出荷準備の前や、午後の追加出荷の判断にご活用ください。
+      </div>
+    </details>
+    <details>
+      <summary>Q. 画面下のボタン（メニュー）が消えてしまいました</summary>
+      <div class="answer-box">
+        キーボード入力画面になっていると隠れることがあります。画面一番下にある「メニュー ▲」という文字をタップすると、いつでも再表示されます。
+      </div>
+    </details>
+    <details>
+      <summary>Q. メッセージを送ると他の農家さんにも見られますか？</summary>
+      <div class="answer-box">
+        他の出荷者さまには一切見えません。店舗スタッフだけが確認できる1対1のやり取りになりますので、安心してご連絡ください。
+      </div>
+    </details>
+    <details>
+      <summary>Q. 文字が小さくて見えにくいときは？</summary>
+      <div class="answer-box">
+        スマートフォンの画面を2本の指で広げるようにタッチ（ピンチアウト）すると、画面を大きく拡大して読むことができます。
+      </div>
+    </details>
+  </div>
+
+  <div class="footer-tel">
+    <p>操作がわからないときは、お気軽に店舗スタッフまでお尋ねください</p>
+    <a href="tel:0173727887" class="tel-btn">📞 店舗へ電話する</a>
+  </div>
+
+</body>
+</html>
